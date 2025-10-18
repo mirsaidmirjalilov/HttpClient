@@ -1,6 +1,7 @@
 package org.example.service_packages.util;
 
 import org.example.service_packages.GroupService;
+import org.example.service_packages.StudentService;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -17,7 +18,7 @@ public class Run {
                     GroupService.run();
                 }
                 case 2 -> {
-                    //todo----- StudentService.run();
+                    StudentService.run();
                 }
                 case 3 -> {
                     System.out.println("Good bye");
@@ -30,9 +31,9 @@ public class Run {
 
     private static void showMenu() {
         System.out.println("""
-                1 - group service
-                2 - student service 
-                3 - exit
-                """);
+                 1 - group service
+                 2 - student service\s
+                 3 - exit
+                \s""");
     }
 }

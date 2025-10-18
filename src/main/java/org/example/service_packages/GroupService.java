@@ -53,9 +53,9 @@ public class GroupService {
         System.out.println(response.version());
 
         int statusCode = response.statusCode();
-        if (statusCode == 204){
+        if (statusCode == 204) {
             System.out.println("group is deleted");
-        }else {
+        } else {
             System.out.println("smth went wrong");
         }
         System.out.println("------------------------------------------");
@@ -69,7 +69,15 @@ public class GroupService {
         System.out.println("new level");
         int level = intScanner.nextInt();
 
-        String url = "http://localhost:9090/api/groups";/// http - HTTP_1_1 version(free)
+        Group group = Group.builder()
+                .name(name)
+                .level(level)
+                .build();
+
+        Gson gson = new GsonBuilder().create();
+        String gsonBody = gson.toJson(group);
+
+        String url = "http://localhost:9090/api/groups/" + groupId;/// http - HTTP_1_1 version(free)
 
         HttpClient client = HttpClient.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
@@ -77,11 +85,15 @@ public class GroupService {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI(url))
-                .headers("Content Type","application/json")
-                .PUT()
+                .headers("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(gsonBody))
                 .build();
 
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        String body = response.body();
+        Group group1 = gson.fromJson(body, Group.class);
+        System.out.println(group1);
+        System.out.println("------------------------------");
 
     }
 
@@ -108,7 +120,7 @@ public class GroupService {
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(new URI(url))
-                .headers("Content Type","application/json")
+                .headers("Content-Type", "application/json")
                 .POST(HttpRequest.BodyPublishers.ofString(jsonBody))
                 .build();
 
@@ -177,8 +189,11 @@ public class GroupService {
 
         Group[] fromJson = gson.fromJson(body, Group[].class);
 
-        for (Group group : fromJson) {
-            System.out.println(group);
+        if (fromJson.length == 0) System.out.println("no groups exist");
+        else {
+            for (Group group : fromJson) {
+                System.out.println(group);
+            }
         }
 
         System.out.println("---------------------------------------");
