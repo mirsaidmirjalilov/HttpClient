@@ -1,14 +1,11 @@
-package org.example.service_packages.util;
-
-import org.example.service_packages.GroupService;
-import org.example.service_packages.StudentService;
+package org.example.service_packages.classeServices;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static org.example.service_packages.util.AppUtils.intScanner;
 
-public class Run {
+public class MainRun {
     public static void run() throws URISyntaxException, IOException, InterruptedException {
         s:
         while (true) {

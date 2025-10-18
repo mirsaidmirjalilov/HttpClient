@@ -1,4 +1,4 @@
-package org.example.service_packages;
+package org.example.service_packages.classeServices;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
