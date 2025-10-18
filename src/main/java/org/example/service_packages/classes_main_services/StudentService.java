@@ -67,21 +67,7 @@ public class StudentService {
         showAllStudents();
         int studentId = intScanner.nextInt();
 
-        System.out.println("enter name");
-        String name = strScanner.nextLine();
-        System.out.println("enter age");
-        int age = intScanner.nextInt();
-        System.out.println("enter student GPA");
-        double GPA = intScanner.nextDouble();
-        System.out.println("enter group id");
-        long groupId = intScanner.nextLong();
-
-        Student student = Student.builder().
-                name(name)
-                .age(age)
-                .GPA(GPA)
-                .groupId(groupId)
-                .build();
+        Student student = new_updated_Student();
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(student);
@@ -109,22 +95,10 @@ public class StudentService {
         System.out.println("----------------------------------------");
     }
 
-    private static void createStudent() throws URISyntaxException, IOException, InterruptedException {
-        System.out.println("enter name for student");
-        String name = strScanner.nextLine();
-        System.out.println("enter age");
-        int age = intScanner.nextInt();
-        System.out.println("enter student GPA");
-        double GPA = intScanner.nextDouble();
-        System.out.println("enter group id");
-        long groupId = intScanner.nextLong();
 
-        Student student = Student.builder().
-                name(name)
-                .age(age)
-                .GPA(GPA)
-                .groupId(groupId)
-                .build();
+
+    private static void createStudent() throws URISyntaxException, IOException, InterruptedException {
+        Student student = new_updated_Student();
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(student);
@@ -221,5 +195,23 @@ public class StudentService {
                  5 - delete student \s
                  6 - back to menu
                 \s""");
+    }
+
+    private static Student new_updated_Student() {
+        System.out.println("enter name");
+        String name = strScanner.nextLine();
+        System.out.println("enter age");
+        int age = intScanner.nextInt();
+        System.out.println("enter student GPA");
+        double GPA = intScanner.nextDouble();
+        System.out.println("enter group id");
+        long groupId = intScanner.nextLong();
+
+        return Student.builder().
+                name(name)
+                .age(age)
+                .GPA(GPA)
+                .groupId(groupId)
+                .build();
     }
 }
