@@ -1,8 +1,8 @@
-package org.example.service_packages.classeServices;
+package org.example.service_packages.classes_main_services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import org.example.service_packages.intity.Student;
+import org.example.service_packages.classes.Student;
 
 import java.io.IOException;
 import java.net.URI;

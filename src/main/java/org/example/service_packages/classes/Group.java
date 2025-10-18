@@ -1,4 +1,4 @@
-package org.example.service_packages.intity;
+package org.example.service_packages.classes;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
