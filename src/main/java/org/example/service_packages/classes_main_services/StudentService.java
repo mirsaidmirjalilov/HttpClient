@@ -36,7 +36,7 @@ public class StudentService {
     private static void deleteStudent() throws URISyntaxException, IOException, InterruptedException {
         System.out.println("choose student to update");
         showAllStudents();
-        int studentId = intScanner.nextInt();
+        long studentId = intScanner.nextLong();
 
         String url = "http://localhost:9090/api/students/" + studentId;
 
@@ -65,7 +65,7 @@ public class StudentService {
     private static void updateStudent() throws URISyntaxException, IOException, InterruptedException {
         System.out.println("choose student to update");
         showAllStudents();
-        int studentId = intScanner.nextInt();
+        long studentId = intScanner.nextLong();
 
         Student student = new_updated_Student();
 
@@ -94,8 +94,6 @@ public class StudentService {
         System.out.println("student updated");
         System.out.println("----------------------------------------");
     }
-
-
 
     private static void createStudent() throws URISyntaxException, IOException, InterruptedException {
         Student student = new_updated_Student();
@@ -129,7 +127,7 @@ public class StudentService {
 
     private static void showStudentById() throws URISyntaxException, IOException, InterruptedException {
         System.out.println("enter student id to show");
-        int studentId = intScanner.nextInt();
+        long studentId = intScanner.nextLong();
 
         String url = "http://localhost:9090/api/students/" + studentId;
 

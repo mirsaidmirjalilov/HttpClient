@@ -63,7 +63,7 @@ public class GroupService {
 
     private static void updateGroup() throws URISyntaxException, IOException, InterruptedException {
         System.out.println("enter id");
-        int groupId = intScanner.nextInt();
+        long groupId = intScanner.nextLong();
         System.out.println("new name");
         String name = strScanner.nextLine();
         System.out.println("new level");
