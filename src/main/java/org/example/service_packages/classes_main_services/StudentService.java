@@ -198,10 +198,13 @@ public class StudentService {
     private static Student new_updated_Student() {
         System.out.println("enter name");
         String name = strScanner.nextLine();
+
         System.out.println("enter age");
         int age = intScanner.nextInt();
+
         System.out.println("enter student GPA");
         double GPA = intScanner.nextDouble();
+
         System.out.println("enter group id");
         long groupId = intScanner.nextLong();
 
