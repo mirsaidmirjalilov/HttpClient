@@ -10,9 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Student {
-    private Long id;
     private String name;
     private Integer age;
     private Double GPA;
-    private Group group;
+    private Long groupId;
 }

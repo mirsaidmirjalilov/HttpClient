@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.example.service_packages.classes.Group;
 import org.example.service_packages.classes.Student;
+import org.example.service_packages.dto.StudentCreator;
 
 import java.io.IOException;
 import java.net.URI;
@@ -35,7 +36,7 @@ public class StudentService {
     }
 
     private static void deleteStudent() throws URISyntaxException, IOException, InterruptedException {
-        System.out.println("choose student to update");
+        System.out.println("choose student to delete");
         showAllStudents();
         long studentId = intScanner.nextLong();
 
@@ -68,7 +69,7 @@ public class StudentService {
         showAllStudents();
         long studentId = intScanner.nextLong();
 
-        Student student = new_updated_Student();
+        Student student = new Student();
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(student);
@@ -97,7 +98,7 @@ public class StudentService {
     }
 
     private static void createStudent() throws URISyntaxException, IOException, InterruptedException {
-        Student student = new_updated_Student();
+        StudentCreator student = new_updated_Student();
 
         Gson gson = new GsonBuilder().create();
         String json = gson.toJson(student);
@@ -196,7 +197,7 @@ public class StudentService {
                 \s""");
     }
 
-    private static Student new_updated_Student() {
+    private static StudentCreator new_updated_Student() {
         System.out.println("enter name");
         String name = strScanner.nextLine();
 
@@ -209,17 +210,6 @@ public class StudentService {
         System.out.println("enter group id:");
         long groupId = intScanner.nextLong();
 
-        // Construct Group object
-        Group group = Group.builder()
-                .id(groupId)
-                .build();
-
-        // Construct Student object
-       return Student.builder()
-                .name(name)
-                .age(age)
-                .GPA(GPA)
-                .group(group)
-                .build();
+       return new StudentCreator(name, age, GPA, groupId);
     }
 }
