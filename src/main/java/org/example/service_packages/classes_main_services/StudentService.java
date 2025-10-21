@@ -2,6 +2,7 @@ package org.example.service_packages.classes_main_services;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.example.service_packages.classes.Group;
 import org.example.service_packages.classes.Student;
 
 import java.io.IOException;
@@ -205,14 +206,20 @@ public class StudentService {
         System.out.println("enter student GPA");
         double GPA = intScanner.nextDouble();
 
-        System.out.println("enter group id");
+        System.out.println("enter group id:");
         long groupId = intScanner.nextLong();
 
-        return Student.builder().
-                name(name)
+        // Construct Group object
+        Group group = Group.builder()
+                .id(groupId)
+                .build();
+
+        // Construct Student object
+       return Student.builder()
+                .name(name)
                 .age(age)
                 .GPA(GPA)
-                .groupId(groupId)
+                .group(group)
                 .build();
     }
 }

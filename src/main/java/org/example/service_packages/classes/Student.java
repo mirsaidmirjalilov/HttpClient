@@ -14,5 +14,5 @@ public class Student {
     private String name;
     private Integer age;
     private Double GPA;
-    private Long groupId;
+    private Group group;
 }
