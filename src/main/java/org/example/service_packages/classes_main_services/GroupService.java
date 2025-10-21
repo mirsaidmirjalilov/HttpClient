@@ -64,15 +64,7 @@ public class GroupService {
     private static void updateGroup() throws URISyntaxException, IOException, InterruptedException {
         System.out.println("enter id");
         long groupId = intScanner.nextLong();
-        System.out.println("new name");
-        String name = strScanner.nextLine();
-        System.out.println("new level");
-        int level = intScanner.nextInt();
-
-        Group group = Group.builder()
-                .name(name)
-                .level(level)
-                .build();
+        Group group = new_updated_Group();
 
         Gson gson = new GsonBuilder().create();
         String gsonBody = gson.toJson(group);
@@ -95,6 +87,18 @@ public class GroupService {
         System.out.println(group1);
         System.out.println("------------------------------");
 
+    }
+
+    private static Group new_updated_Group() {
+        System.out.println("new name");
+        String name = strScanner.nextLine();
+        System.out.println("new level");
+        int level = intScanner.nextInt();
+
+        return Group.builder()
+                .name(name)
+                .level(level)
+                .build();
     }
 
     private static void createGroup() throws URISyntaxException, IOException, InterruptedException {
